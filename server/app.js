@@ -4,11 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose')
+
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var comment = require('./routes/commentRouter')
+var share = require('./routes/shareRouter')
+var user = require('./routes/userRouter')
+
 
 var app = express();
+
+mongoose.connect('mongodb://admin:admin@cluster0-shard-00-00-lxcs3.mongodb.net:27017,cluster0-shard-00-01-lxcs3.mongodb.net:27017,cluster0-shard-00-02-lxcs3.mongodb.net:27017/mongoose_jepretgram?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {
+  useMongoClient: true
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +32,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/share', share)
+app.use('/comment', comment)
+app.use('/user', user)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
