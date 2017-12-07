@@ -7,6 +7,15 @@ let mutations = {
   },
   setNewShare (state, payload) {
     state.shares.push(payload)
+  },
+  setShareById (state, payload) {
+    state.shareById = payload
+  },
+  setCommentByShareId (state, payload) {
+    state.commentsByShareId = payload
+  },
+  setNewComment (state, payload) {
+    state.comments = payload
   }
 }
 

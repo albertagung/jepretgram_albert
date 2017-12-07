@@ -1,30 +1,32 @@
 <template lang="html">
   <div class="comment">
     <div class="card" style="width: 20rem;">
-      <ul class="list-group list-group-flush" v-for="comment in comments">
-        <li class="list-group-item">{{comment.title}}</li>
+      <ul class="list-group list-group-flush" v-for="comment in commentsByShareId">
+        <li class="list-group-item">{{comment.comment}}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: 'Comment',
+  props: ['shareId'],
   methods: {
     ...mapActions(
       [
-        'getAllComments'
+        'getAllCommentByShareId'
       ]
     )
-  }
+  },
   computed: {
-    comments () {
-      return this.$store.state.comments
+    commentsByShareId () {
+      return this.$store.state.commentsByShareId
     }
   },
   created () {
-    this.getAllComments()
+    this.getAllCommentByShareId(this.shareId)
   }
 }
 </script>

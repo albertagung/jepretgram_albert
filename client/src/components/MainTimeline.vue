@@ -4,6 +4,7 @@
       <img class="card-img-top" :src="share.content" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">{{share.title}}</h4>
+        <router-link :to="`/main-page/${share._id}`"><a class="btn btn-primary">View Details</a></router-link>
       </div>
     </div>
   </div>

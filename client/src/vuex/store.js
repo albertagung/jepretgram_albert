@@ -7,7 +7,10 @@ Vue.use(Vuex)
 
 let initialState = {
   shares: [],
-  loginCredentials: {}
+  loginCredentials: {},
+  shareById: {},
+  commentsByShareId: [],
+  comments: []
 }
 
 export default new Vuex.Store({

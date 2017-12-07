@@ -26,6 +26,30 @@ let actions = {
     }).catch((err) => {
       console.log(err)
     })
+  },
+  getShareById ({commit}, payload) {
+    axios.get(`http://localhost:3000/share/${payload}`)
+    .then(({data}) => {
+      commit('setShareById', data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  },
+  getAllCommentByShareId ({commit}, payload) {
+    axios.get(`http://localhost:3000/comment/${payload}`)
+    .then(({data}) => {
+      commit('setCommentByShareId', data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  },
+  postNewComment ({commit}, payload) {
+    axios.post(`http://localhost:3000/comment`, payload)
+    .then(({data}) => {
+      commit('setNewComment', data)
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 }
 
