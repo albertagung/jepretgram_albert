@@ -1,18 +1,23 @@
 <template lang="html">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-9">
-        <MainTimeline></MainTimeline>
+      <div class="col-md-2">
+        <Sidebar></Sidebar>
+      </div>
+      <div class="col-md-10">
+        <router-view></router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar'
 import MainTimeline from '@/components/MainTimeline'
 export default {
   components: {
-    MainTimeline
+    MainTimeline,
+    Sidebar
   }
 }
 </script>

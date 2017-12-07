@@ -6,7 +6,8 @@ import actions from './actions'
 Vue.use(Vuex)
 
 let initialState = {
-  shares: []
+  shares: [],
+  loginCredentials: {}
 }
 
 export default new Vuex.Store({

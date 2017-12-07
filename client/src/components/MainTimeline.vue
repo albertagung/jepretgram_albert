@@ -4,7 +4,6 @@
       <img class="card-img-top" :src="share.content" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">{{share.title}}</h4>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>
@@ -24,6 +23,9 @@ export default {
   computed: {
     shares () {
       return this.$store.state.shares
+    },
+    loginCredentials () {
+      return this.$store.state.loginCredentials
     }
   },
   created () {
