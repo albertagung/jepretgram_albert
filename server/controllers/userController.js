@@ -1,4 +1,5 @@
 const User = require('../models/userModel.js')
+const crypt = require('../helper/crypt.js')
 
 // Find all user
 let findAll = function (req, res) {
@@ -24,16 +25,18 @@ let findById = function (req, res) {
 
 // Insert new user
 let addNewUser = function (req, res) {
-  let newUser = User(
-    {
-      username: req.body.username,
-      password: req.body.password
-    }
-  )
-  newUser.save().then(function (dataUser) {
-    res.status(200).send(dataUser)
-  }).catch(function (err) {
-    res.status(500).send(err)
+  crypt(req.body.password).then(function (dataPassword) {
+    let newUser = User(
+      {
+        username: req.body.username,
+        password: dataPassword
+      }
+    )
+    newUser.save().then(function (dataUser) {
+      res.status(200).send(dataUser)
+    }).catch(function (err) {
+      res.status(500).send(err)
+    })
   })
 }
 

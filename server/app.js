@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
+var cors = require('cors')
 
 
 var index = require('./routes/index');
@@ -14,6 +15,8 @@ var user = require('./routes/userRouter')
 
 
 var app = express();
+
+app.use(cors())
 
 mongoose.connect('mongodb://admin:admin@cluster0-shard-00-00-lxcs3.mongodb.net:27017,cluster0-shard-00-01-lxcs3.mongodb.net:27017,cluster0-shard-00-02-lxcs3.mongodb.net:27017/mongoose_jepretgram?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {
   useMongoClient: true
